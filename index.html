@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ann Yang | Professional Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f8f1e9;
+            --secondary: #e8d5b5;
+            --accent: #d4a373;
+            --accent-dark: #b3875d;
+            --text: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--primary);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        nav ul li a.active {
+            color: var(--accent);
+        }
+
+        nav ul li a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 4px solid var(--secondary);
+            box-shadow: var(--shadow);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            display: none;
+            flex: 1;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--text);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* Education Link Design */
+        
+        .edu-link {
+            color: var(--text-light);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .edu-link:hover {
+            color: var(--accent-dark);
+            border-bottom: 1px solid var(--accent-dark);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.03);
+        }
+
+        .project-content {
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .project-date {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .project-links a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .experience-company a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .experience-company a:hover {
+            text-decoration: underline;
+        }
+
+        .experience-date {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .experience-location {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .experience-description {
+            margin-top: 15px;
+        }
+
+        .experience-description ul {
+            list-style-position: inside;
+            padding-left: 5px;
+        }
+
+        .experience-description li {
+            margin-bottom: 8px;
+        }
+
+        .experience-link1 {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .experience-link1:hover {
+            color: var(--accent-dark);
+            border-bottom: 1px solid var(--accent-dark);
+        }
+
+        .experience-link2 {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .experience-link2:hover {
+            color: var(--accent-dark);
+            border-bottom: 1px solid var(--accent-dark);
+        }
+
+        /* Awards Section */
+        .awards-list {
+            margin-top: 40px;
+        }
+
+        .award-item {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+        }
+
+        .award-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .award-image-container {
+            flex-shrink: 0;
+            width: auto;
+            height: auto;
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+            line-height: 0;
+        }
+
+        .award-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .award-item:hover .award-image {
+            transform: scale(1.05);
+        }
+
+        .award-content {
+            flex-grow: 1;
+        }
+
+        .award-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .award-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .award-organization {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .award-organization a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .award-organization a:hover {
+            text-decoration: underline;
+        }
+        
+        .award-date {
+            color: var(--text-light);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .award-description {
+            margin: 15px 0;
+            color: var(--text-light);
+        }
+
+        .award-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .award-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .award-links a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info {
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-icon {
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-text:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            color: var(--text);
+            font-size: 24px;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 10px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav ul li {
+            margin: 0 10px;
+        }
+
+        .footer-nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .footer-nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .footer-social a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow);
+                padding: 20px;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+
+            nav.active {
+                transform: translateY(0);
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .experience-date {
+                margin-top: 5px;
+            }
+            
+            .award-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .award-image-container {
+                margin-bottom: 20px;
+            }
+            
+            .award-header {
+                justify-content: center;
+            }
+            
+            .award-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .contact-container {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .footer-nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .footer-social {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Ann Yang</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-section="education">Education</a></li>
+                    <li><a href="#" class="nav-link" data-section="experience">Roles</a></li>
+                    <li><a href="#" class="nav-link" data-section="projects">Projects</a></li>
+                    <li><a href="#" class="nav-link" data-section="awards">Awards</a></li>
+                    <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <img src="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Headshot%20UBC%202023%20Cropped.jpg" alt="Ann Yang" class="hero-image">
+                <h1>Ann Yang</h1>
+                <p>- Master of Public Health -<br><br>
+                <b>Hi, I'm Ann.</b><br>
+                I’m a passionate public health graduate from the University of British Columbia, Canada. 🍁 I’m committed to contributing to accessible, sustainable, and community-driven initiatives.<br><br>
+Nice to meet you!</p>
+            </div>
+        </section>
+        
+        
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="hero">
+            
+                <h2>🎓 Degree 🎓</h2>
+                
+                <p><br>
+                <b>University of British Columbia</b><br>
+                Master of Public Health (2026)<br>
+                BSc in Food, Nutrition, and Health (2022)<br>
+                </p>
+                
+                <h2>📃 Certification 📃</h2>
+                
+                <p><br>
+                Hazard Analysis and Critical Control Point (HACCP) (2020)<br><br>
+                Coursera (California Institute of the Arts)<br>
+                > 
+                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Coursera%20CalArts%20UI-UX%20Design%20Certification%202020.pdf" target="_blank" class="edu-link">
+                    UI/UX Design Specialization (2020)</a><br>
+                > 
+                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Coursera%20CalArts%20Graphic%20Design%20Certification%202020.pdf" target="_blank" class="edu-link">
+                    Graphic Design Specialization (2020)</a><br><br>
+                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/tcps2_core_certificate%202022_Ann%20Yang.pdf" target="_blank" class="edu-link">
+                    TCPS 2: CORE (2025)</a><br>
+                </p>
+                
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Personal Projects</h2>
+                <div class="projects-grid">
+                
+                    <!-- Project -->
+                    <div class="project-card" data-url="https://web.archive.org/web/20241207181201/https:/blog.scienceborealis.ca/sparking-action-the-hidden-power-of-outrage/">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/14/03/22/elephant-1822481_1280.jpg"alt="Sparking Action – The Hidden Power of Outrage" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title"><i>📝 blog post 📝</i><br>
+                            Sparking Action – The Hidden Power of Outrage</h3>
+                            <p class="project-date">June, 2024</p>
+                            <p>Guest author on Science Borealis, a now-retired, volunteer-driven platform dedicated to sharing engaging, Canadian-focused science stories and promoting science communication nationwide.</p>
+                            <div class="project-links">
+                                <a href="https://web.archive.org/web/20241207181201/https:/blog.scienceborealis.ca/sparking-action-the-hidden-power-of-outrage/" target="_blank"><i class="fas fa-external-link-alt"></i> Blog post</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project -->
+                    <div class="project-card" data-url="https://www.pearson.com/ca/en/higher-education/higher-education-blog/2022/03/sustaining-yourself-in-university.html">
+                        <img src="https://www.pearson.com/content/dam/one-dot-com/one-dot-com/ca/en/higher-ed/blog/sustaining-yourself.jpg.transform/big-size-xs/img.jpeg" alt="University Image" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title"><i>📝 blog post 📝</i><br>
+                            Sustaining Yourself in University: Self-Care and Avoiding Burnout</h3>
+                            <p class="project-date">March 2022</p>
+                            <p>Guest author on Pearson Canada’s Student Blog, sharing insights and strategies grounded in the post-secondary student experience to support peers in areas like well-being and student life.</p>
+                            <div class="project-links">
+                                <a href="https://www.pearson.com/ca/en/higher-education/higher-education-blog/2022/03/sustaining-yourself-in-university.html" target="_blank"><i class="fas fa-external-link-alt"></i> Blog post</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Professional Experience</h2>
+                <h1>🎯 Current 🎯</h1>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Member of the Professional Development Sub-Council</h3>
+                            <p class="experience-company"><a href="https://www.landfood.ubc.ca/alumni/young-alumni-council/" target="_blank">UBC LFS Young Alumni Council</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">November 2022 – Present</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Developing activities and events to engage UBC LFS alumni across the globe</li>
+                            <li>Organizing and hosting 3 Zoom webinars featuring industry professionals</li>
+                            <li>Representing the organization in on-campus activities and fostering a student/alumni community</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h1>📂 Past 📂</h1>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Student Researcher</h3>
+                            <p class="experience-company"><a href="https://sustain.ubc.ca/programs/seeds-sustainability-program" target="_blank">UBC Social Ecological Economic Development Studies Sustainability Program</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">September 2024 – December 2024</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Conducted BREB-approved qualitative research evaluating REAP 4.0 Health and Wellbeing criteria in <a href="https://polyhomes.com/community/the-conservatory/"
+                                class="experience-link2"
+                                target="_blank">an established UBC residential building</a> along with two other student researchers</li>
+                            <li>Designed, facilitated, and transcribed 5 semi-structured interviews, including photovoice</li>
+                            <li>Developed recommendations and final reporting for UBC Campus & Community Planning</li>
+                            <li>Report:
+                            <a href="https://sustain.ubc.ca/sites/default/files/seedslibrary/RES_505_Incorporations%20of%20Nature%20and%20Daylight%20in%20The%20Conservatory_FinalReport.pdf"
+                            class="experience-link1"
+                            target="_blank">
+                            Incorporations of Nature and Daylight in The Conservatory: REAP 4.0 Health and Wellbeing Standards</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Evaluation Intern</h3>
+                            <p class="experience-company"><a href="https://www.bccdc.ca/" target="_blank">BC Centre for Disease Control</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">May 2025 – August 2025</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Led the evaluation of the <a href="https://towardtheheart.com/update/bccdc-take-home-naloxone-program-to-pilot-distribution-of-nasal-naloxone-kits"
+                                class="experience-link1"
+                                target="_blank">BC nasal take-home naloxone pilot</a> with the BCCDC <a href="https://www.bccdc.ca/our-services/programs/harm-reduction-substance-use-services"
+                                class="experience-link2"
+                                target="_blank">Harm Reduction & Substance Use Services team</a>, in consultation with people with lived and living experience</li>
+                            <li>Authored the evaluation proposal and developed multiple data collection tools (surveys and semi-structured interview guides), independently facilitating mixed-methods data collection</li>
+                            <li>Analyzed and visualized population-level and focus group data using R Script and Excel</li>
+                            <li>Delivered preliminary findings through a two-page executive summary, a 50-page stakeholder-focused report, and presentations as needed</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">UBC Sustainability Scholar Intern</h3>
+                            <p class="experience-company"><a href="https://www2.gov.bc.ca/gov/content/governments/organizational-structure/ministries-organizations/ministries/agriculture" target="_blank">BC Ministry of Food and Agriculture</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">May 2024 – August 2024</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Completed a sustainability project that examined the lessons and successes of selected BC hospitals and health authorities on food procurement experiences during the COVID-19 pandemic</li>
+                            <li>Generated a one-page provincial recommendation sheet (not public-facing)</li>
+                            <li>Presented the outcomes to relevant provincial ministry representatives on-site</li>
+                            <li>Public facing report:
+                            <a href="https://sustain.ubc.ca/about/resources/strategies-used-bc-health-authorities-combat-food-supply-chain-disruptions-during"
+                            class="experience-link1"
+                            target="_blank">
+                            Strategies used by BC Health Authorities to combat food supply chain disruptions during the COVID-19 pandemic</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Communication Lead; Member of the Webinar, Infographic, and Conference Subcommittees</h3>
+                            <p class="experience-company"><a href="https://web.archive.org/web/20240221202016/https://kidsbrainhealth.ca/training/trainee-network/policy-advisory-research-training-committee/" target="_blank">KBHN Policy Advocacy Research Training Committee</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">February 2022 – May 2024</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Produced relevant graphical and written content on Instagram & Twitter/X</li>
+                            <li>Developed outreach schedules and templates to increase brand awareness and engagement</li>
+                            <li>Hosted a successful trainee bingo event at the KBHN Annual Conference 2023 training days with a two-person team and attendance of 40+ participants</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Administrative Assistant – Assistive Technology (AA-AT)</h3>
+                            <p class="experience-company"><a href="https://www.develop.bc.ca/" target="_blank">Developmental Disability Association</a></p>
+                            <p class="experience-location">Richmond, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">March 2022 – September 2023</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Provided strong administrative support in departmental day-to-day activities, including reporting, scheduling, event coordination, and data collection</li>
+                            <li>Managed a borrowable assistive technology library, including resource sourcing, designing, and modifying, as well as responding to service requests</li>
+                            <li>Independently developed a digital library app with Microsoft Power Apps and Power Automate to encourage assistive technology utilization, exploration, and borrowing by 20+ DDA sites</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Training Program Assistant</h3>
+                            <p class="experience-company"><a href="https://kidsbrainhealth.ca/" target="_blank">Kids Brain Health Network</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">October 2021 – January 2023</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Worked under a supervisor in a virtual setting to create, edit, and compile multiple internal and external documents regarding the provision of financial awards to selected applicants</li>
+                            <li>Provided strong logistical and administrative support, including editing and reviewing documents, organizing files, curating data, managing calendar events, and addressing incoming inquiries</li>
+                            <li>Drafted materials and forms with Microsoft Office and Adobe Acrobat for the launch of new programs and awards, external letters, task lists, conference agendas, and internal reports</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Project Manager</h3>
+                            <p class="experience-company"><a href="https://campuslightbox.com/" target="_blank">Campus Lightbox</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">October 2021 – January 2023</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Provided strong executive and administrative support, such as recruiting 4 new talents, guiding critical decision-making processes, thorough documentation, and evaluating team performance</li>
+                            <li>Worked closely with several team leads in multi-sector project coordination and synchronization by ensuring effective internal communication and leading virtual weekly meetings</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Ambassador</h3>
+                            <p class="experience-company"><a href="https://campuslightbox.com/" target="_blank">Campus Lightbox</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">November 2019 – September 2021</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Worked with other members of the outreach team to contact university professors and on-campus organizations to promote Campus Lightbox, a mental health resource page for UBC students</li>
+                            <li>Designed several potential events aimed at increasing student awareness and engagement with high flexibility, catering to the team’s capacity and the changing socio-environmental context</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience -->
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Research Partner</h3>
+                            <p class="experience-company"><a href="https://www.ams.ubc.ca/support-services/student-services/food-bank/" target="_blank">AMS Food Bank</a></p>
+                            <p class="experience-location">Vancouver, BC, Canada</p>
+                        </div>
+                        <p class="experience-date">January 2021 – April 2021</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Developed a comprehensive survey to evaluate the local student community’s attitude toward the AMS food bank and identify knowledge, availability, and accessibility gaps</li>
+                            <li>Produced a written report for the AMS Food Bank with a team of five</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        
+        
+        <!-- Awards Section -->
+        <section id="awards" class="section">
+            <div class="container">
+                <h2 class="section-title">Awards & Honors</h2>
+                <div class="awards-list">
+                
+                 <!-- Award -->
+                    <div class="award-item">
+                        <div class="award-image-container">
+                            <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="World Eval Case Comp" class="award-image">
+                        </div>
+                        <div class="award-content">
+                            <div class="award-header">
+                                <div>
+                                    <h3 class="award-title">World Evaluation Case Competition (2024)<br>
+                                    <i>Winning Team</i></h3>
+                                    <p class="award-organization"><a href="https://www.worldcasecomp.net/case-comps" target="_blank">World Evaluation Case Competition</a></p>
+                                </div>
+                            </div>
+                            <p class="award-description">Winner of the World Evaluation Case Competition, an international challenge where top student teams analyze real-world non-profit and government program evaluations.</p>
+                            <div class="award-links">
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/World%20Evaluation%20Case%20Competition%202024.pdf" target="_blank"><i class="fas fa-certificate"></i> Certificate</a>
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/World%20Eval%20Case%20Comp%202024/2024_WECC_Case.pdf" target="_blank"><i class="fas fa-file-lines"></i> Case</a>
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/World%20Eval%20Case%20Comp%202024/Global%20Student%20Case%20Comp%20Submission.pdf" target="_blank"><i class="fas fa-file-lines"></i> Submission</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                 <!-- Award -->
+                    <div class="award-item">
+                        <div class="award-image-container">
+                            <img src="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Student%20Eval%20Case%20Comp%202024/photo%20-%20plaque%202" alt="Canadian Eval Case Comp" class="award-image">
+                        </div>
+                        <div class="award-content">
+                            <div class="award-header">
+                                <div>
+                                    <h3 class="award-title">Canadian Student Evaluation Case Competition (2024)<br>
+                                    <i>Winning Team</i></h3>
+                                    <p class="award-organization"><a href="https://competition.evaluationcanada.ca/" target="_blank">Canadian Evaluation Society</a></p>
+                                </div>
+                            </div>
+                            <p class="award-description">Winner of the Student Evaluation Case Competition, a dynamic two-round national challenge where top student teams develop and present program evaluation proposals based on real-world cases.</p>
+                            <div class="award-links">
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Student%20Evaluation%20Case%20Competition%20Canada%202024" target="_blank"><i class="fas fa-certificate"></i> Certificate</a>
+                                <a href="https://evaluationcanada.ca/about/latest-news.html?id=399" target="_blank"><i class="fas fa-newspaper"></i> Press Release</a>
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Student%20Eval%20Case%20Comp%202024/round%201%20-%20Round1_Case.pdf" target="_blank"><i class="fas fa-file-lines"></i> Case 1</a>
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Student%20Eval%20Case%20Comp%202024/round%201%20-%20Feb%203rd%20Submission%20-%20Systems%20Thinking%20Ltd.pdf" target="_blank"><i class="fas fa-file-lines"></i> Submission 1</a>
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Student%20Eval%20Case%20Comp%202024/round%202%20-%20CES-CESEF%20Case%20Comp%202024%20Final%202024-05-01.pdf" target="_blank"><i class="fas fa-file-lines"></i> Case 2</a>
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Student%20Eval%20Case%20Comp%202024/round%202%20-%20Systems%20Thinking%20LTD%20May%206th%2C%202024.pptx" target="_blank"><i class="fas fa-file-lines"></i> Submission 2</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                 <!-- Award -->
+                    <div class="award-item">
+                        <div class="award-image-container">
+                            <img src="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/KBHN%20Outstanding%20Trainee%20Award%202024.png" alt="KBHN Outstanding Trainee Award" class="award-image">
+                        </div>
+                        <div class="award-content">
+                            <div class="award-header">
+                                <div>
+                                    <h3 class="award-title">KBHN Outstanding Trainee Award 2023-2024<br></h3>
+                                    <p class="award-organization"><a href="https://kidsbrainhealth.ca/" target="_blank">Kids Brain Health Network</a></p>
+                                </div>
+                            </div>
+                            <p class="award-description">This award recognizes a trainee’s outstanding contribution and commitment to the KBHN community. This person dedicates large amounts of time and energy to our network activities—including conferences, webinars, workshops, and more.</p>
+                            <div class="award-links">
+                                <a href="https://file.garden/aG6d-aSlI01WWQ42/LinkedIn/Outstanding%20KBHN%20Award%202023-24.pdf" target="_blank"><i class="fas fa-certificate"></i> Certificate</a>
+                                <a href="https://kidsbrainhealth.ca/kbhns-annual-outstanding-awards-2023-2024/" target="_blank"><i class="fas fa-newspaper"></i> Press Release</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                <!-- Award -->
+                    <div class="award-item">
+                        <div class="award-image-container">
+                            <img src="https://images.unsplash.com/photo-1550592704-6c76defa9985?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="UBC Tuum Est Experiential Award" class="award-image">
+                        </div>
+                        <div class="award-content">
+                            <div class="award-header">
+                                <div>
+                                    <h3 class="award-title">UBC Tuum Est Experiential Award (2017)<br></h3>
+                                    <p class="award-organization"><a href="https://www.ubc.ca/" target="_blank"> University of British Columbia</a></p>
+                                </div>
+                            </div>
+                            <p class="award-description">This is an one-time entrance award granted to incoming UBC students who displayed outstanding academic and extracurricular achievements during high school to help support their experiential learning opportunities.</p>
+                            <div class="award-links">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                
+                    <!-- Award -->
+                    <div class="award-item">
+                    <p>(Psst. Want to know where the following icons are from? Check out frontawesome!)</p>
+                        <div class="award-links">
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-certificate"></i> Certificate</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-newspaper"></i> Press Release</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-file-lines"></i> Document</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-globe"></i> Association</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-info-circle"></i> Details</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-calendar-alt"></i> Conference</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Project</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-images"></i> Gallery</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-project-diagram"></i> Project</a>
+                                <a href="https://fontawesome.com/" target="_blank"><i class="fas fa-building"></i> Organization</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <a href="mailto:annyang99@hotmail.com" class="contact-text">annyang99@hotmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin-in contact-icon"></i>
+                            <a href="https://www.linkedin.com/in/annyang99/" target="_blank" class="contact-text">@annyang99</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <a href="https://www.google.com/maps/place/Metro+Vancouver,+British+Columbia,+CA/" target="_blank" class="contact-text">British Columbia, Canada</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+            <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/annyang99/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:annyang99@hotmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="copyright">Connect with me! I am <b>&lt;Open for work&gt;</b>.</p>
+            <p class="copyright">© <span id="year"></span> Ann Yang. All rights reserved.<br>
+            This website was created with Rainfall Café (web hosting), File Garden (file hosting), and ChatGPT/Deepseek AI (coding support).
+            </p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Tab navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Hide all sections
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Remove active class from all links
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                
+                // Show selected section
+                const sectionId = link.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Close mobile menu if open
+                nav.classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Project card click handling
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Check if the click is on a link, if so, we don't open the project link
+                if (e.target.closest('a')) {
+                    return;
+                }
+                const url = this.dataset.url;
+                if (url) {
+                    window.open(url, '_blank');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
